@@ -1,5 +1,3 @@
-const { gql } = require('apollo-server-express');
-
 import gql from 'graphql-tag';
 
 export const LOGIN_USER = gql`
@@ -25,8 +23,6 @@ export const ADD_USER = gql`
     }
   }
 `;
-
-import gql from 'graphql-tag';
 
 export const SAVE_BOOK = gql`
   mutation saveBook($bookData: bookInput) {
@@ -55,7 +51,7 @@ export const REMOVE_BOOK = gql`
         username
         email
         password
-        savedBooks{
+        savedBooks {
             bookId
             authors
             description
