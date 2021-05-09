@@ -27,7 +27,15 @@ const SavedBooks = () => {
         variables: {bookId: bookId}
       })
 
-      if (!response.ok) {
+      response.then(data=>{
+        console.log('DATA', data)
+      //  const {user, token} = data.data.login
+      //  console.log("USER", user, "TOKEN", token)
+      //  Auth.login(user, token);
+      }
+      )
+
+      if (!response) {
         throw new Error('something went wrong!');
       }
 
