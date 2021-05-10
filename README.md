@@ -22,7 +22,7 @@
   book-search is used for searching and saving your favorite books
 
   ## License
-  ![badge](https://img.shields.io/badge/license-Apache License 2.0-darkyellow)
+  ![badge](https://img.shields.io/badge/License-Apache%20License%202.0-darkyellow)
   <br />
   This application is covered by the Apache License 2.0 license.
 
