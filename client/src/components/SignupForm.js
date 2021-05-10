@@ -32,24 +32,24 @@ const SignupForm = () => {
     try {
       console.log('USER FORM DATA', userFormData)
       const response = addUser({
-        variables: {...userFormData}
+        variables: { ...userFormData }
       })
 
-      response.then(data=>{
+      response.then(data => {
         console.log('DATA', data)
-        const {user, token} = data.data.addUser
-      
-        Auth.login(user, token);
+        const { token } = data.data.addUser
+        console.log("TOKEN", token);
+        Auth.login(token);
       }
       )
       if (!response) {
         throw new Error('something went wrong!');
       }
 
-     // const { token, user } = await response.json();
-    //  console.log('USER',user);
-    //  Auth.login(token);
-      } catch (err) {
+      // const { token, user } = await response.json();
+      //  console.log('USER',user);
+      //  Auth.login(token);
+    } catch (err) {
       console.error(err);
       setShowAlert(true);
     }

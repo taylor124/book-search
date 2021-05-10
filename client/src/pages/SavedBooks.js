@@ -2,16 +2,15 @@ import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { REMOVE_BOOK } from '../utils/mutations'
-import { Auth }from '../utils/auth';
+import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 import { GET_ME } from '../utils/queries';
 
 const SavedBooks = () => {
-  
-  const {loading, userData } = useQuery(GET_ME);
+  const { loading, userData } = useQuery(GET_ME);
   const userDataData = userData?.me || {};
   const userDataLength = Object.keys(userDataData).length;
-  console.log({userDataLength});
+  console.log({ userDataLength });
   const [removeBook] = useMutation(REMOVE_BOOK);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
@@ -25,14 +24,14 @@ const SavedBooks = () => {
     try {
 
       const response = await removeBook({
-        variables: {bookId: bookId}
+        variables: { bookId: bookId }
       })
 
-      response.then(data=>{
+      response.then(data => {
         console.log('DATA', data)
-       const {user, token} = data.data.login
-      //  console.log("USER", user, "TOKEN", token)
-       Auth.login(user, token);
+        const { token } = data.data.login
+        console.log("TOKEN", token)
+        Auth.login(token);
       }
       )
 

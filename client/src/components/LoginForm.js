@@ -36,9 +36,9 @@ const LoginForm = () => {
 
       response.then(data=>{
         console.log('DATA', data)
-        const {user, token} = data.data.login
-        console.log("USER", user, "TOKEN", token)
-        Auth.login(user, token);
+        const {token} = data.data.login
+        console.log("TOKEN", token);
+        Auth.login(token);
       }
       )
       if (!response) {
